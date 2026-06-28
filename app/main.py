@@ -16,10 +16,14 @@ app = FastAPI(title="hello")
 app.include_router(login_router)
 
 
+# @app.get("/")
+# def root():
+    # version 字串之後做 blue-green / canary、確認新版上線時會用到
+    # return {"service": "hello", "version": VERSION}
+
 @app.get("/")
 def root():
-    # version 字串之後做 blue-green / canary、確認新版上線時會用到
-    return {"service": "hello", "version": VERSION}
+    return {"service": "order", "version": VERSION, "build": "v2"}
 
 
 @app.get("/health")
