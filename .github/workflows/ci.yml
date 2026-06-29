@@ -15,7 +15,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pytest -v --cov=app --cov-fail-under=70
 
-  build-and-deploy:                  # ch6：測試過了，才 build → push GHCR → 更新 config repo
+  build-and-deploy:                  # ch6：測試過了，才 build → push GHCR → 更新 config repo，新增這段
     needs: test                      # ← 測試沒過不部署
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
